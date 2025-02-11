@@ -14,8 +14,8 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "Default"
-    this.description = "Default Description"
+    this.title = "Title"
+    this.description = "Description"
     this.image = "https://via.placeholder.com/150";
     this.backgroundColor = "pink";
   }
@@ -26,57 +26,55 @@ export class MyCard extends LitElement {
         display: block;
       }
 
-.pokemon-card {
-  display: inline-flex;
-  max-width: 400px;
-  border-radius: 100px;
-  margin: 16px;
-  padding: 20px;
-  background-color: pink;
-  text-align: center;
-}
+      .pokemon-card {
+      display: inline-grid;
+      max-width: 800px;
+      border-radius: 100px;
+      margin: 16px;
+      padding: 20px;
+      background-color: pink;
+      text-align: center;
+    }
 
-.title {
-  color: purple;
-  font-family: fantasy;
-  font-size: 50px;
-  margin-bottom: 20px;
-}
+      .title {
+        color: black;
+        font-family: fantasy;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
 
-.description {
-  color: purple;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
+      .description {
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
 
-.img {
-  max-width: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-}
+      .img {
+        max-width: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+      }
 
-.fancy {
-  background-color: #f0c040; 
-}
 
-.btn {
-  padding: 16px 65px;
-  background-color: purple;
-  color: white;
-  font-family: fantasy;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-}
+      .btn {
+        padding: 16px 65px;
+        background-color: purple;
+        color: white;
+        font-family: fantasy;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
 
-.btn:hover {
-  background-color: lightblue;
-}
-    `;
-  }
+      .focus,
+      .btn:hover {
+        background-color: lightblue;
+      }
+          `;
+        }
 
   render() {
     return html`
@@ -84,8 +82,9 @@ export class MyCard extends LitElement {
       <h1 class="title">${this.title}</h1>
         <p class="description">${this.description}</p>
         <img class="image" src="${this.image}" alt="${this.title}"/>
+        <slot></slot>
       <a href="https://hax.psu.edu">
-        <button class="btn">Details</button>
+        <button class="btn"><em>Details</em></button>
       </a>
     </div>
     `;
@@ -93,6 +92,7 @@ export class MyCard extends LitElement {
 
   static get properties() {
     return {
+      fancy: { type: Boolean, refelect: true },
       title: { type: String },
       description: { type: String },
       image: { type: String },
