@@ -1,87 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="Description" content="Boilerplate for polaris chip" />
+    <base href="/" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Boilerplate for polaris chip">
-  <base href="/">
+    <style>
+      :root,
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #ededed;
+      }
+      polaris-chip {
+        margin: 16px;
+      }
 
-  <style>
-    :root,
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
-    }
-    polaris-chip {
-      margin: 16px;
-    }
+      a {
+        background-color: var(--polaris-chip-background-color, orange);
+        margin: 16px;
+        color: red;
+        background-color: azure;
+        padding: 50px;
+      }
+    </style>
+    <title>polaris-chip / my-card</title>
+  </head>
 
-    a {
-      background-color: var(--polaris-chip-background-color, orange);
-      margin: 16px;
-      color: red;
-      background-color: azure;
-      padding: 50px;
-    }
-  </style>
-  <title>polaris-chip / my-card</title>
-</head>
+  <body>
+    <h1>polaris-chip</h1>
+    <!-- this is going to do whatever the tag's defaults are -->
+    <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
+    <polaris-chip title="Faculty and Staff"></polaris-chip>
+    <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
+    <polaris-chip title="Grants and donations"></polaris-chip>
 
-<body>
-  <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
-  <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
-  <polaris-chip title="Faculty and Staff"></polaris-chip>
-  <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
-  <polaris-chip title="Grants and donations"></polaris-chip>
+    <a href="https://psu.edu/" target="_blank">PSU</a>
 
-  <a href="https://psu.edu/" target="_blank">PSU</a>
+    <h1>my-card</h1>
+    <button>Toggle</button>
+    <script>
+      const button = document.querySelector("button");
+      button.addEventListener("click", () => {
+        const card = document.querySelector("my-card");
+        card.fancy = !card.fancy;
+      });
+    </script>
 
-  <h1>my-card</h1>
+    <my-card
+      title="Gengar"
+      description="Gengar card from Paldean Fates"
+      image="https://tcgplayer-cdn.tcgplayer.com/product/284266_in_800x800.jpg"
+      backgroundColor="Purple"
+    >
+      <p>TEST SLOT</p>
+    </my-card>
 
-  <my-card
-    title="Gengar"
-    description="Gengar card from Paldean Fates"
-    image="https://tcgplayer-cdn.tcgplayer.com/product/284266_in_800x800.jpg"
-    backgroundColor="Purple">
-    <p>TEST SLOT</p>
-  </my-card>
+    <my-card
+      title="Dragonite V"
+      description="Dragonite V card from Evolving Skies"
+      image="https://tcgplayer-cdn.tcgplayer.com/product/246758_in_800x800.jpg"
+      backgroundColor="Orange"
+    >
+    </my-card>
 
-  <my-card
-    title="Dragonite V"
-    description="Dragonite V card from Evolving Skies"
-    image="https://tcgplayer-cdn.tcgplayer.com/product/246758_in_800x800.jpg"
-    backgroundColor="Yellow">
-  </my-card>
+    <my-card
+      title="Snorlax"
+      description="Snorlax Promo card from Scarlet & Violet"
+      image="https://tcgplayer-cdn.tcgplayer.com/product/517175_in_800x800.jpg"
+      backgroundColor="Blue"
+    >
+    </my-card>
 
-  <my-card
-    title="Snorlax"
-    description="Snorlax Promo card from Scarlet & Violet"
-    image="https://tcgplayer-cdn.tcgplayer.com/product/517175_in_800x800.jpg"
-    backgroundColor="Blue">
-  </my-card>
+    <my-card
+      title="Cleffa"
+      description="Cleffa card from Obsidian Flames"
+      image="https://tcgplayer-cdn.tcgplayer.com/product/509949_in_800x800.jpg"
+      backgroundColor="Pink"
+    >
+    </my-card>
 
-  <my-card
-    title="Cleffa"
-    description="Cleffa card from Obsidian Flames"
-    image="https://tcgplayer-cdn.tcgplayer.com/product/509949_in_800x800.jpg"
-    backgroundColor="Pink">
-  </my-card>
+    <my-card
+      title="Venusaur & Snivy GX"
+      description="Tag team card from Cosmic Eclipse"
+      image="https://tcgplayer-cdn.tcgplayer.com/product/200350_in_800x800.jpg"
+      backgroundColor="Green"
+    >
+    </my-card>
 
-  <my-card
-    title="Venusaur & Snivy GX"
-    description="Tag team card from Cosmic Eclipse"
-    image="https://tcgplayer-cdn.tcgplayer.com/product/200350_in_800x800.jpg"
-    backgroundColor="Green">
-  </my-card>
-
-  <!-- this is what is bringing in the definition for this tag -->
-  <script type="module" src="./src/polaris-chip.js"></script>
-  <script type="module" src="./src/my-card.js"></script>
-</body>
-
+    <!-- this is what is bringing in the definition for this tag -->
+    <script type="module" src="./src/polaris-chip.js"></script>
+    <script type="module" src="./src/my-card.js"></script>
+  </body>
 </html>
