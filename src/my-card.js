@@ -13,8 +13,8 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "Title";
-    this.description = "Description";
+    this.title = "Mew EX";
+    this.description = "Mew EX from Paldean Fates";
     this.image = "https://via.placeholder.com/150";
     this.backgroundColor = "pink";
     this.fancy = false;
@@ -35,8 +35,8 @@ export class MyCard extends LitElement {
 
       .pokemon-card {
         display: inline-grid;
-        max-width: 800px;
-        border-radius: 100px;
+        max-width: 300px;
+        border-radius: 20px;
         margin: 16px;
         padding: 20px;
         background-color: pink;
@@ -57,7 +57,7 @@ export class MyCard extends LitElement {
         margin-bottom: 30px;
       }
 
-      .img {
+      .image {
         max-width: 50px;
         display: block;
         margin-left: auto;
@@ -79,11 +79,36 @@ export class MyCard extends LitElement {
       .btn:hover {
         background-color: lightblue;
       }
+
+      details summary {
+        text-align: left;
+        font-size: 20px;
+        padding: 8px 0;
+      }
+
+      details[open] summary {
+        font-weight: bold;
+      }
+
+      details div {
+        border: 2px solid black;
+        text-align: left;
+        padding: 8px;
+        height: 70px;
+        overflow: auto;
+      }
     `;
   }
+
+  toggleFancy() {
+    //I got this off Google, idk why it won't work
+    this.fancy = !this.fancy;
+    this.backgroundColor = this.fancy ? "lightblue" : "pink";
+  }
+
   openChanged(e) {
-    console.log(e.newState);
-    if (e.newState === "open") {
+    console.log(e);
+    if (e.target.getAttribute("open") !== null) {
       this.fancy = true;
     } else {
       this.fancy = false;
@@ -97,8 +122,8 @@ export class MyCard extends LitElement {
         style="background-color: ${this.backgroundColor};"
       >
         <h1 class="title">${this.title}</h1>
-        <button>Toggle</button>
-        <p class="description">${this.description}</p>
+        <button @click="${this.toggleFancy}" class="btn">Toggle Fancy</button>
+        <p class="description"><slot>${this.description}</slot></p>
         <img class="image" src="${this.image}" alt="${this.title}" />
         <details ?open="${this.fancy}" @toggle="${this.openChanged}">
           <summary>Description</summary>
@@ -115,7 +140,7 @@ export class MyCard extends LitElement {
 
   static get properties() {
     return {
-      fancy: { type: Boolean, refelect: true },
+      fancy: { type: Boolean, reflect: true },
       title: { type: String },
       description: { type: String },
       image: { type: String },
