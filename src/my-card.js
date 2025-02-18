@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import "@haxtheweb/meme-maker/meme-maker.js";
 
 /**
  * Now it's your turn. Here's what we need to try and do:
@@ -27,15 +28,15 @@ export class MyCard extends LitElement {
       }
 
       :host([fancy]) {
-        display: block;
+        display: inline-block;
         background-color: pink;
         border: 2px solid fuchsia;
         box-shadow: 10px 5px 5px red;
       }
 
       .pokemon-card {
-        display: inline-grid;
-        max-width: 300px;
+        display: block;
+        width: 300px;
         border-radius: 20px;
         margin: 16px;
         padding: 20px;
@@ -45,9 +46,9 @@ export class MyCard extends LitElement {
 
       .title {
         color: black;
-        font-family: fantasy;
-        font-size: 50px;
-        margin-bottom: 20px;
+        font-family: courier;
+        font-size: 30px;
+        margin-bottom: 10px;
       }
 
       .description {
@@ -58,10 +59,9 @@ export class MyCard extends LitElement {
       }
 
       .image {
-        max-width: 50px;
+        max-width: 200px;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         margin-bottom: 30px;
       }
 
@@ -100,12 +100,6 @@ export class MyCard extends LitElement {
     `;
   }
 
-  toggleFancy() {
-    //I got this off Google, idk why it won't work
-    this.fancy = !this.fancy;
-    this.backgroundColor = this.fancy ? "lightblue" : "pink";
-  }
-
   openChanged(e) {
     console.log(e);
     if (e.target.getAttribute("open") !== null) {
@@ -122,9 +116,17 @@ export class MyCard extends LitElement {
         style="background-color: ${this.backgroundColor};"
       >
         <h1 class="title">${this.title}</h1>
-        <button @click="${this.toggleFancy}" class="btn">Toggle Fancy</button>
-        <p class="description"><slot>${this.description}</slot></p>
-        <img class="image" src="${this.image}" alt="${this.title}" />
+        <p class="description">
+          <slot>${this.description}</slot>
+        </p>
+        <!-- <img class="image" src="${this.image}" alt="${this.title}" /> -->
+        <meme-maker
+          alt="Surprised Pikachu"
+          image-url="https://external-preview.redd.it/0UF4Gqxwe330DKxNz1_GpmkwIDX0e_TyJdXbbkDVm78.jpg?width=640&crop=smart&auto=webp&s=9acdc0d2e2e8e98861b235a29ac674ed3397e10f"
+          bottom-text="in Programming for Divs"
+          top-text="When I have to program"
+        >
+        </meme-maker>
         <details ?open="${this.fancy}" @toggle="${this.openChanged}">
           <summary>Description</summary>
           <div>
